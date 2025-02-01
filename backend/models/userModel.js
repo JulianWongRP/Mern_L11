@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const validator = require('validator')
 
 const Schema = mongoose.Schema
@@ -50,6 +50,8 @@ userSchema.statics.signup = async function (email, password) {
 //static login method
 
 userSchema.statics.login = async function(email, password) {
+
+  
   if (!validator.isEmail(email)) {
     throw Error("Email is not valid")
   } //checks if its not email
