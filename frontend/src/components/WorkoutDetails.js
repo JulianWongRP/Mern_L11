@@ -14,7 +14,6 @@ const WorkoutDetails = ({ workout }) => {
   const [updatedLoad, setUpdatedLoad] = useState(workout.load)
   const [updatedReps, setUpdatedReps] = useState(workout.reps)
 
-  // DELETE workout
   const handleDelete = async () => {
     if (!user) return
 
@@ -29,7 +28,6 @@ const WorkoutDetails = ({ workout }) => {
     }
   }
 
-  // UPDATE workout
   const handleUpdate = async () => {
     if (!user) return
 
@@ -55,7 +53,6 @@ const WorkoutDetails = ({ workout }) => {
   return (
     <div className="workout-details">
       {isEditing ? (
-        // EDIT MODE
         <div>
           <input type="text" value={updatedTitle} onChange={(e) => setUpdatedTitle(e.target.value)} />
           <input type="number" value={updatedLoad} onChange={(e) => setUpdatedLoad(e.target.value)} />
@@ -64,14 +61,13 @@ const WorkoutDetails = ({ workout }) => {
           <button onClick={() => setIsEditing(false)}>Cancel</button>
         </div>
       ) : (
-        // VIEW MODE
         <div>
           <h4>{workout.title}</h4>
           <p><strong>Load (kg): </strong>{workout.load}</p>
           <p><strong>Reps: </strong>{workout.reps}</p>
           <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+          <span className="material-symbols-outlined" onClick={handleDelete}>delete</span>
         </div>
       )}
     </div>
