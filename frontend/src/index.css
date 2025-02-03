@@ -128,3 +128,8 @@ form.signup, form.login {
   background: #fff;
   border-radius: 4px;
 }
+
+.workout-details button{
+  margin: 5px;
+  color: green;
+}
